@@ -80,3 +80,5 @@ aws cloudtrail lookup-events \
   --end-time 2024-12-23T11:00:00Z \
   --output json > forensic-evidence.json
 ```
+## 📸 Forensic Evidence
+View investigation screenshots in the [screenshots/](screenshots/) folder.
