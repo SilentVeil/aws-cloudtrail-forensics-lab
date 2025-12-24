@@ -20,6 +20,9 @@ A production web application was compromised through unauthorized security group
 - **AWS CLI** - Command-line forensic investigation
 - **Linux grep/awk** - Local log processing and pattern matching
 
+## 🏗️ Architecture
+![AWS Incident Responese Architecture](images/vpc-architecture.png)
+
 ### **Investigation Methodology**
 1. **Evidence Collection** - Gather all relevant logs and artifacts
 2. **Timeline Analysis** - Reconstruct attack sequence
