@@ -94,27 +94,27 @@ A comprehensive security incident investigation involving unauthorized infrastru
 ## ⚡ Key Evidence
 
 ### 1. Attack Vector Identification
-![CloudTrail Malicious Event](screenshots/cloudtrail-attack-event.png)
+![CloudTrail Malicious Event](images/cloudtrail-attack-event.png)
 *IAM user `chaos` executing `AuthorizeSecurityGroupIngress` to open port 22 globally*
 
 ### 2. Infrastructure Compromise
-![Security Group Before Attack](screenshots/security-group-before.png)
+![Security Group Before Attack](images/security-group-before.png)
 *Normal configuration before compromise*
 
-![Security Group After Attack](screenshots/security-group-after.png)
+![Security Group After Attack](images/security-group-After.png)
 *Unauthorized rule allowing 0.0.0.0/0 access to SSH port*
 
 ### 3. Forensic Analysis
-![Athena Query Results](screenshots/athena-query-results.png)
+![Athena Query Results](images/athena-query-results.png)
 *Log analysis identifying attacker's activities across services*
 
 ### 4. OS-Level Intrusion & Remediation
-![Authentication Logs & User Removal](screenshots/auth-logs-terminal.png)
+![Authentication Logs & User Removal](images/auth-logs-terminal.png)
 *SSH access by `chaos-user` (top) → Session termination & account removal (bottom)*
 
 ### 5. Cloud-Level Remediation
-![IAM Access Revoked](screenshots/iam-user-disabled.png)
-![IAM Access Revoked](screenshots/iam-user-able.png)
+![IAM Access Revoked](images/iam-user-disabled.png)
+![IAM Access Revoked](images/iam-user-able.png)
 *IAM permissions for `chaos` user revoked at cloud level*
 
 
