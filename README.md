@@ -20,9 +20,6 @@ A production web application was compromised through unauthorized security group
 - **AWS CLI** - Command-line forensic investigation
 - **Linux grep/awk** - Local log processing and pattern matching
 
-## 🏗️ Architecture
-![AWS Incident Responese Architecture](images/AWS-IRA.png)
-
 ### **Investigation Methodology**
 1. **Evidence Collection** - Gather all relevant logs and artifacts
 2. **Timeline Analysis** - Reconstruct attack sequence
@@ -83,5 +80,81 @@ aws cloudtrail lookup-events \
   --end-time 2024-12-23T11:00:00Z \
   --output json > forensic-evidence.json
 ```
-## 📸 Forensic Evidence
-View investigation screenshots in the [screenshots/](screenshots/) folder.
+
+
+# 🔍 AWS CloudTrail Forensic Investigation Lab
+
+## 🎯 Executive Summary
+A comprehensive security incident investigation involving unauthorized infrastructure modification, forensic log analysis, and multi-layer remediation.
+
+## 🏗️ Investigation Architecture
+![AWS Incident Responese Architecture](images/AWS-IRA.png)
+
+
+## ⚡ Key Evidence
+
+### 1. Attack Vector Identification
+![CloudTrail Malicious Event](screenshots/cloudtrail-attack-event.png)
+*IAM user `chaos` executing `AuthorizeSecurityGroupIngress` to open port 22 globally*
+
+### 2. Infrastructure Compromise
+![Security Group Before Attack](screenshots/security-group-before.png)
+*Normal configuration before compromise*
+
+![Security Group After Attack](screenshots/security-group-after.png)
+*Unauthorized rule allowing 0.0.0.0/0 access to SSH port*
+
+### 3. Forensic Analysis
+![Athena Query Results](screenshots/athena-query-results.png)
+*Log analysis identifying attacker's activities across services*
+
+### 4. OS-Level Intrusion & Remediation
+![Authentication Logs & User Removal](screenshots/auth-logs-terminal.png)
+*SSH access by `chaos-user` (top) → Session termination & account removal (bottom)*
+
+### 5. Cloud-Level Remediation
+![IAM Access Revoked](screenshots/iam-user-disabled.png)
+![IAM Access Revoked](screenshots/iam-user-able.png)
+*IAM permissions for `chaos` user revoked at cloud level*
+
+
+
+## 📋 Investigation Timeline
+| Phase | Action | Evidence |
+|-------|--------|----------|
+| **Detection** | Unauthorized SG modification detected | CloudTrail logs, SG rule changes |
+| **Analysis** | Athena queries & log correlation | Query results, attack pattern |
+| **Attribution** | IAM user `chaos` identified | User activity timeline |
+| **Containment** | IAM access revoked, SG restored | IAM console, EC2 console |
+| **Eradication** | OS user account removed | Terminal session, auth logs |
+
+## 🛠️ Tools & Techniques
+- **AWS CloudTrail** - API activity monitoring
+- **Amazon Athena** - Log analysis at scale
+- **AWS CLI** - Forensic data collection
+- **Linux Authentication Logs** - OS-level intrusion detection
+- **IAM & EC2 Console** - Access control & configuration management
+
+## 📁 Complete Evidence Package
+Full investigation artifacts available in the [screenshots/](screenshots/) directory:
+- 10+ evidence files
+- Raw log samples
+- Configuration backups
+- Investigation notes
+
+## 🎓 Skills Demonstrated
+- Cloud Security Incident Response
+- Multi-layer Forensic Analysis (Cloud + OS)
+- AWS Native Security Tool Proficiency
+- Infrastructure Hardening & Remediation
+- Comprehensive Documentation
+
+---
+
+## 👨‍💻 Investigator
+**Renaldi** | Cloud Security Analyst  
+[GitHub Profile](https://github.com/renaldi136)
+
+*Documentation of hands-on incident response exercise.*
+
+
